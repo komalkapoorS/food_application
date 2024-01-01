@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -35,6 +36,15 @@ public class Appcontroller {
 			return repo.findAll();
 		}catch(Exception e) {
 			e.printStackTrace();
+		}
+		return null;
+	}
+	@GetMapping("/getone/{Id}")
+	public Optional<Appentity> get(@PathVariable int Id) {
+		try {
+			return repo.findById(Id);
+		}catch(Exception e) {
+			e.printStackTrace();	
 		}
 		return null;
 	}
